@@ -10,13 +10,19 @@
 
 @interface UIButton (frame)
 
+//设置图片离左边的距离
 -(float)imageLeft;
 -(void)setImageLeft:(float)imageLeft;
 
+//设置文字离左边的距离
 -(float)titleLeft;
 -(void)setTitleLeft:(float)titleLeft;
 
+//设置文字居中
 -(float)titleCenter;
 -(void)setTitleCenter;
 
+
+//设置图片在文字右边
+-(void)setimageToTitleRight;
 @end

@@ -71,4 +71,13 @@
 
 }
 
+
+-(void)setimageToTitleRight{
+    
+    if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft) {
+        NSLog(@"%f %f",self.titleLabel.frame.origin.x,self.titleLabel.frame.size.width);
+        //[self setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.titleLabel.frame.origin.x, 0, 0)];
+        [self setImageEdgeInsets:UIEdgeInsetsMake(0, -self.imageView.frame.origin.x+self.titleLabel.frame.origin.x+self.titleLabel.frame.size.width, 0, 0)];
+    }
+}
 @end
