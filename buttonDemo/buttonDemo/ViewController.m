@@ -24,6 +24,7 @@
     
     //---------------
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.tag = 11;
     [btn setFrame:CGRectMake(100, 100, 200, 30)];
     btn.backgroundColor = [UIColor blackColor];
     [btn setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
@@ -32,15 +33,17 @@
     [btn.titleLabel setBackgroundColor:[UIColor redColor]];
     
     btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;    //AlignmentType Left
-    
+    [btn addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [btn setImageLeft:24];
-    [btn setTitleCenter];
+    [btn setTitleLeft:36];
+    
     [self.view addSubview:btn];
     
  
     //---------------
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn2.tag = 12;
     [btn2 setFrame:CGRectMake(100, 150, 200, 30)];
     btn2.backgroundColor = [UIColor blackColor];
     [btn2 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
@@ -49,15 +52,19 @@
     [btn2.titleLabel setBackgroundColor:[UIColor redColor]];
     
     btn2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter; //AlignmentType Center
-    
+    [btn2 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [btn2 setImageLeft:24];
-    [btn2 setTitleCenter];
+    [btn2 setTitleLeft:36];
     [self.view addSubview:btn2];
     
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(200, 150, 1, 30)];
+    line.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:line];
     
     //---------------
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn3.tag = 13;
     [btn3 setFrame:CGRectMake(100, 200, 200, 30)];
     btn3.backgroundColor = [UIColor blackColor];
     [btn3 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
@@ -66,13 +73,14 @@
     [btn3.titleLabel setBackgroundColor:[UIColor redColor]];
     btn3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight; //AlignmentType Right
     [btn3 setImageLeft:24];
-    [btn3 setTitleCenter];
-    NSLog(@"%f",btn3.imageLeft);
+    [btn3 setTitleLeft:36];
+    [btn3 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:btn3];
     
     //---------------
     UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn4.tag = 14;
     [btn4 setFrame:CGRectMake(100, 250, 200, 30)];
     btn4.backgroundColor = [UIColor blackColor];
     [btn4 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
@@ -80,7 +88,7 @@
     btn4.titleLabel.font = defaultFont10;
     [btn4.titleLabel setBackgroundColor:[UIColor redColor]];
     btn4.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
-    
+    [btn4 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     [btn4 setimageToTitleRight];
     
     NSLog(@"%f",btn4.imageLeft);
@@ -118,7 +126,19 @@
 
 }
 
-
+-(void)titleChanged:(UIButton *)sender{
+    
+    if (sender.tag == 13 || sender.tag == 11 || sender.tag == 12) {
+        [sender setTitle:@"haha" forState:UIControlStateNormal];
+        [sender setImageLeft:24];
+        [sender setTitleLeft:36];
+    }
+    
+    if (sender.tag == 14) {
+        [sender setTitle:@"haha" forState:UIControlStateNormal];
+        [sender setimageToTitleRight];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

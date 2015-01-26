@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum{
+    
+    ButtonPaddingTypeImageRight = 0,
+    ButtonPaddingTypeCenterImageTop = 1,
+    ButtonPaddingTypeCenterTitleTop = 2
+}ButtonPaddingType;
+
 @interface UIButton (frame)
 
 //设置图片离左边的距离
@@ -22,7 +29,6 @@
 -(float)titleCenter;
 -(void)setTitleCenter;
 
-
 //设置图片在文字右边
 -(void)setimageToTitleRight;
 
@@ -32,5 +38,6 @@
 
 //设置图片和文字都居中，文字在上,padding为图片跟文字的间距
 -(void)setImageAndTitleCenterTitleTopWithpadding:(float)padding;
+
 
 @end
