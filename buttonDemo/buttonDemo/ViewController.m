@@ -41,7 +41,7 @@
  
     //---------------
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn2 setFrame:CGRectMake(100, 200, 200, 30)];
+    [btn2 setFrame:CGRectMake(100, 150, 200, 30)];
     btn2.backgroundColor = [UIColor blackColor];
     [btn2 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
     [btn2 setTitle:@"我是被测试的2" forState:UIControlStateNormal];
@@ -58,7 +58,7 @@
     
     //---------------
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn3 setFrame:CGRectMake(100, 300, 200, 30)];
+    [btn3 setFrame:CGRectMake(100, 200, 200, 30)];
     btn3.backgroundColor = [UIColor blackColor];
     [btn3 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
     [btn3 setTitle:@"我是被测试的3" forState:UIControlStateNormal];
@@ -73,7 +73,7 @@
     
     //---------------
     UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn4 setFrame:CGRectMake(100, 400, 200, 30)];
+    [btn4 setFrame:CGRectMake(100, 250, 200, 30)];
     btn4.backgroundColor = [UIColor blackColor];
     [btn4 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
     [btn4 setTitle:@"setImageToRight" forState:UIControlStateNormal];
@@ -81,13 +81,41 @@
     [btn4.titleLabel setBackgroundColor:[UIColor redColor]];
     btn4.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
     
-    
     [btn4 setimageToTitleRight];
     
     NSLog(@"%f",btn4.imageLeft);
     
     [self.view addSubview:btn4];
     
+    
+    //---------------
+    UIButton *btn5 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn5 setFrame:CGRectMake(100, 300, 200, 50)];
+    btn5.backgroundColor = [UIColor blackColor];
+    [btn5 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
+    [btn5 setTitle:@"setImageToRight" forState:UIControlStateNormal];
+    btn5.titleLabel.font = defaultFont10;
+    [btn5.titleLabel setBackgroundColor:[UIColor redColor]];
+    btn5.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
+    
+    [btn5 setImageAndTitleCenterImageTopWithpadding:0];
+    
+    [self.view addSubview:btn5];
+    
+    //---------------
+    UIButton *btn6 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn6 setFrame:CGRectMake(100, 360, 200, 50)];
+    btn6.backgroundColor = [UIColor blackColor];
+    [btn6 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
+    [btn6 setTitle:@"setImageToRight" forState:UIControlStateNormal];
+    btn6.titleLabel.font = defaultFont10;
+    [btn6.titleLabel setBackgroundColor:[UIColor redColor]];
+    btn6.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
+    
+    [btn6 setImageAndTitleCenterTitleTopWithpadding:0];
+    
+    [self.view addSubview:btn6];
+
 }
 
 

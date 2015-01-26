@@ -25,4 +25,12 @@
 
 //设置图片在文字右边
 -(void)setimageToTitleRight;
+
+
+//设置图片和文字都居中，图片在上,padding为图片跟文字的间距
+-(void)setImageAndTitleCenterImageTopWithpadding:(float)padding;
+
+//设置图片和文字都居中，文字在上,padding为图片跟文字的间距
+-(void)setImageAndTitleCenterTitleTopWithpadding:(float)padding;
+
 @end
