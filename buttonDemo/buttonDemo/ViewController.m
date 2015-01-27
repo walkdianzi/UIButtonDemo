@@ -36,7 +36,7 @@
     [btn addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [btn setImageLeft:24];
-    [btn setTitleLeft:36];
+    [btn setTitleLeft:48];
     
     [self.view addSubview:btn];
     
@@ -55,7 +55,7 @@
     [btn2 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [btn2 setImageLeft:24];
-    [btn2 setTitleLeft:36];
+    [btn2 setTitleLeft:48];
     [self.view addSubview:btn2];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(200, 150, 1, 30)];
@@ -73,7 +73,7 @@
     [btn3.titleLabel setBackgroundColor:[UIColor redColor]];
     btn3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight; //AlignmentType Right
     [btn3 setImageLeft:24];
-    [btn3 setTitleLeft:36];
+    [btn3 setTitleCenter];
     [btn3 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:btn3];
@@ -84,43 +84,45 @@
     [btn4 setFrame:CGRectMake(100, 250, 200, 30)];
     btn4.backgroundColor = [UIColor blackColor];
     [btn4 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
-    [btn4 setTitle:@"setImageToRight" forState:UIControlStateNormal];
+    [btn4 setTitle:@"hahahaha" forState:UIControlStateNormal];
     btn4.titleLabel.font = defaultFont10;
     [btn4.titleLabel setBackgroundColor:[UIColor redColor]];
-    btn4.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
+    btn4.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter; //AlignmentType Center
     [btn4 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     [btn4 setimageToTitleRight];
-    
-    NSLog(@"%f",btn4.imageLeft);
     
     [self.view addSubview:btn4];
     
     
     //---------------
     UIButton *btn5 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn5.tag = 15;
     [btn5 setFrame:CGRectMake(100, 300, 200, 50)];
     btn5.backgroundColor = [UIColor blackColor];
     [btn5 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
     [btn5 setTitle:@"setImageToRight" forState:UIControlStateNormal];
     btn5.titleLabel.font = defaultFont10;
     [btn5.titleLabel setBackgroundColor:[UIColor redColor]];
-    btn5.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
+    [btn5 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
     
-    [btn5 setImageAndTitleCenterImageTopWithpadding:0];
+    btn5.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight; //AlignmentType Right
+    [btn5 setImageAndTitleCenterImageTopWithpadding:3];
     
     [self.view addSubview:btn5];
     
     //---------------
     UIButton *btn6 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn6.tag = 16;
     [btn6 setFrame:CGRectMake(100, 360, 200, 50)];
     btn6.backgroundColor = [UIColor blackColor];
     [btn6 setImage:[UIImage imageNamed:@"best_icon"] forState:UIControlStateNormal];  //24x15
     [btn6 setTitle:@"setImageToRight" forState:UIControlStateNormal];
     btn6.titleLabel.font = defaultFont10;
     [btn6.titleLabel setBackgroundColor:[UIColor redColor]];
-    btn6.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Right
+    [btn6 addTarget:self action:@selector(titleChanged:) forControlEvents:UIControlEventTouchUpInside];
+    btn6.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; //AlignmentType Left
     
-    [btn6 setImageAndTitleCenterTitleTopWithpadding:0];
+    [btn6 setImageAndTitleCenterTitleTopWithpadding:5];
     
     [self.view addSubview:btn6];
 
@@ -131,12 +133,22 @@
     if (sender.tag == 13 || sender.tag == 11 || sender.tag == 12) {
         [sender setTitle:@"haha" forState:UIControlStateNormal];
         [sender setImageLeft:24];
-        [sender setTitleLeft:36];
+        [sender setTitleCenter];
     }
     
     if (sender.tag == 14) {
-        [sender setTitle:@"haha" forState:UIControlStateNormal];
+        [sender setTitle:@"setImageToRight" forState:UIControlStateNormal];
         [sender setimageToTitleRight];
+    }
+    
+    if (sender.tag == 15) {
+        [sender setTitle:@"haha" forState:UIControlStateNormal];
+        [sender setImageAndTitleCenterImageTopWithpadding:3];
+    }
+    
+    if (sender.tag == 16) {
+        [sender setTitle:@"haha" forState:UIControlStateNormal];
+        [sender setImageAndTitleCenterTitleTopWithpadding:5];
     }
 }
 

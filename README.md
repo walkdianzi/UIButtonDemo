@@ -1,6 +1,8 @@
 UIButtonDemo
 ============
 
+**self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft | UIControlContentHorizontalAlignmentCenter | UIControlContentHorizontalAlignmentRight适用，self.contentHorizontalAlignment.UIControlContentHorizontalAlignmentFill不适用**
+
 简单设置uibutton 的imageview离button左边的距离
 >[btn setImageLeft:24];
 
@@ -10,7 +12,7 @@ UIButtonDemo
 设置文字居中
 >[btn setTitleCenter];
 
-设置图片在文字右边（self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft）
+设置图片在文字右边
 >[btn setimageToTitleRight];
 
 设置图片和文字都居中，图片在上,padding为图片跟文字的间距

@@ -15,6 +15,9 @@
     return self.imageView.frame.origin.x;
 }
 
+//UIControlContentHorizontalAlignmentLeft：UIEdgeInsetsMake(0, padding, 0, 0)     center：UIEdgeInsetsMake(0, padding, 0, -padding)  right：UIEdgeInsetsMake(0, 0, 0, padding)
+
+
 -(void)setImageLeft:(float)imageLeft{
     if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft) {
         //相对于初始位置的偏移,AlignmentLeft时image初始位置永远为0,0
@@ -23,7 +26,7 @@
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentCenter){
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self setImageEdgeInsets:UIEdgeInsetsMake(0, (-(self.frame.size.width-self.titleLabel.frame.size.width-self.imageView.frame.size.width)/2+imageLeft)*2, 0, 0)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0, -(self.frame.size.width-self.titleLabel.frame.size.width-self.imageView.frame.size.width)/2+imageLeft, 0, (self.frame.size.width-self.titleLabel.frame.size.width-self.imageView.frame.size.width)/2-imageLeft)];
         });
         
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
@@ -46,7 +49,7 @@
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentCenter){
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, (-(self.frame.size.width-self.imageView.frame.size.width-self.titleLabel.frame.size.width)/2-self.imageView.frame.size.width+titleLeft)*2, 0, 0)];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, -(self.frame.size.width-self.imageView.frame.size.width-self.titleLabel.frame.size.width)/2-self.imageView.frame.size.width+titleLeft, 0, (self.frame.size.width-self.imageView.frame.size.width-self.titleLabel.frame.size.width)/2+self.imageView.frame.size.width-titleLeft)];
         });
         
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
@@ -75,7 +78,7 @@
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentCenter){
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, ((self.imageView.frame.size.width)/2-self.imageView.frame.size.width)*2, 0, 0)];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, (self.imageView.frame.size.width)/2-self.imageView.frame.size.width, 0, -(self.imageView.frame.size.width)/2+self.imageView.frame.size.width)];
         });
         
     }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
@@ -91,10 +94,23 @@
 -(void)setimageToTitleRight{
 
     if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft) {
-        NSLog(@"%f %f",self.titleLabel.frame.origin.x,self.titleLabel.frame.size.width);
-        //[self setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.titleLabel.frame.origin.x, 0, 0)];
-        NSLog(@"%f",-self.imageView.frame.origin.x+self.titleLabel.frame.origin.x+self.titleLabel.frame.size.width);
-        [self setImageEdgeInsets:UIEdgeInsetsMake(0, -self.imageView.frame.origin.x+self.titleLabel.frame.origin.x+self.titleLabel.frame.size.width, 0, 0)];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.imageView.frame.size.width, 0, 0)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0, self.titleLabel.frame.size.width, 0, 0)];
+        });
+    }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentCenter){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.imageView.frame.size.width, 0, self.imageView.frame.size.width)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0, self.titleLabel.frame.size.width, 0, -self.titleLabel.frame.size.width)];
+        });
+    }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, self.imageView.frame.size.width)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -self.titleLabel.frame.size.width)];
+        });
     }
 }
 
@@ -107,9 +123,27 @@
     
     if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft) {
         
-        [self setImageEdgeInsets:UIEdgeInsetsMake(-self.imageView.frame.size.height-padding, -self.imageView.frame.origin.x+(self.frame.size.width/2-self.imageView.frame.size.width/2), 0, 0)];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setImageEdgeInsets:UIEdgeInsetsMake(-self.imageView.frame.size.height-padding, (self.frame.size.width-self.imageView.frame.size.width)/2, 0, 0)];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(self.titleLabel.frame.size.height+padding, (self.frame.size.width-self.titleLabel.frame.size.width)/2-self.imageView.frame.size.width, 0, 0)];
+        });
         
-        [self setTitleEdgeInsets:UIEdgeInsetsMake(self.titleLabel.frame.size.height+padding, -self.titleLabel.frame.origin.x+(self.frame.size.width/2-self.titleLabel.frame.size.width/2), 0, 0)];
+    }else if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentCenter){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setImageEdgeInsets:UIEdgeInsetsMake(-self.imageView.frame.size.height-padding, self.titleLabel.frame.size.width/2, 0, -self.titleLabel.frame.size.width/2)];
+            
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(self.titleLabel.frame.size.height+padding, -self.imageView.frame.size.width/2, 0, self.imageView.frame.size.width/2)];
+        });
+    }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self setImageEdgeInsets:UIEdgeInsetsMake(-self.imageView.frame.size.height-padding, 0, 0, (self.frame.size.width-self.imageView.frame.size.width)/2-self.titleLabel.frame.size.width)];
+            
+            
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(self.titleLabel.frame.size.height+padding, 0, 0, (self.frame.size.width-self.titleLabel.frame.size.width)/2)];
+        });
     }
 }
 
@@ -122,9 +156,26 @@
     
     if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentLeft) {
         
-        [self setImageEdgeInsets:UIEdgeInsetsMake(self.imageView.frame.size.height+padding, -self.imageView.frame.origin.x+(self.frame.size.width/2-self.imageView.frame.size.width/2), 0, 0)];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setImageEdgeInsets:UIEdgeInsetsMake(self.imageView.frame.size.height+padding, (self.frame.size.width-self.imageView.frame.size.width)/2, 0, 0)];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(-self.titleLabel.frame.size.height-padding, (self.frame.size.width-self.titleLabel.frame.size.width)/2-self.imageView.frame.size.width, 0, 0)];
+        });
+    }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentCenter) {
         
-        [self setTitleEdgeInsets:UIEdgeInsetsMake(-self.titleLabel.frame.size.height+padding, -self.titleLabel.frame.origin.x+(self.frame.size.width/2-self.titleLabel.frame.size.width/2), 0, 0)];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setImageEdgeInsets:UIEdgeInsetsMake(self.imageView.frame.size.height+padding, self.titleLabel.frame.size.width/2, 0, -self.titleLabel.frame.size.width/2)];
+            
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(-self.titleLabel.frame.size.height-padding, -self.imageView.frame.size.width/2, 0, self.imageView.frame.size.width/2)];
+        });
+    }else if (self.contentHorizontalAlignment==UIControlContentHorizontalAlignmentRight){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self setImageEdgeInsets:UIEdgeInsetsMake(self.imageView.frame.size.height+padding, 0, 0, (self.frame.size.width-self.imageView.frame.size.width)/2-self.titleLabel.frame.size.width)];
+            
+            
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(-self.titleLabel.frame.size.height-padding, 0, 0, (self.frame.size.width-self.titleLabel.frame.size.width)/2)];
+        });
     }
 }
 
